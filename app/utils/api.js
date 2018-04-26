@@ -59,8 +59,9 @@ function sortPlayers (players) {
 module.exports = {
 
 	battle: function (players) {
-		return axios.all(player.map(getUserData))
+		return axios.all(players.map(getUserData))
 		.then(sortPlayers)
+		.catch(handleError);
 	},
 
   fetchPopularRepos: function (language) {
