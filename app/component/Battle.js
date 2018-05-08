@@ -1,7 +1,7 @@
-var React = require('react');
-var PropTypes = require('prop-types');
-var Link = require('react-router-dom').Link;
-var PlayerPreview = require('./PlayerPreview');
+const React = require('react');
+const PropTypes = require('prop-types');
+const Link = require('react-router-dom').Link;
+const PlayerPreview = require('./PlayerPreview');
 
 
 class PlayerInput extends React.Component {
@@ -16,13 +16,9 @@ class PlayerInput extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	handleChange (event) {
-		var value = event.target.value;
+		const value = event.target.value;
 
-		this.setState (function () {
-			return {
-				username: value
-			}
-		})
+		this.setState (() => ({ username: value }))
 	}
 	handleSubmit(event) {
 		event.preventDefault();
@@ -38,7 +34,7 @@ class PlayerInput extends React.Component {
 				<label className='header' htmlFor='username'>
 					{this.props.label}
 				</label>
-				<input 
+				<input
 					id='username'
 					type='text'
 					autoComplete='off'
@@ -64,7 +60,7 @@ PlayerInput.propTypes= {
 class Battle extends React.Component {
 	constructor(props) {
 		super(props);
-		
+
 		this.state = {
 			playerOneName: '',
 			playerOneImage: null,
@@ -94,7 +90,7 @@ class Battle extends React.Component {
 			return newState;
 		})
 	}
- 
+
 	render () {
 		var match = this.props.match;
 		var playerOneName = this.state.playerOneName;
@@ -106,17 +102,17 @@ class Battle extends React.Component {
 			<div>
 				<div className='row'>
 					{!playerOneName &&
-					<PlayerInput 
+					<PlayerInput
 						id='playerOne'
 						label='Player One'
 						onSubmit={this.handleSubmit}
 					/>}
 					{playerOneImage !== null &&
-					<PlayerPreview 
+					<PlayerPreview
 						avatar={playerOneImage}
 						username={playerOneName}
 					>
-						<button 
+						<button
 							className='reset'
 							onClick={this.handleReset.bind(null, 'playerOne')}>
 							Reset
@@ -131,11 +127,11 @@ class Battle extends React.Component {
 							onSubmit={this.handleSubmit}
 					 	/>}
 					 {playerTwoImage !== null &&
-					 <PlayerPreview 
+					 <PlayerPreview
 						avatar={playerTwoImage}
 						username={playerTwoName}
 					>
-						<button 
+						<button
 							className='reset'
 							onClick={this.handleReset.bind(null, 'playerTwo')}>
 							Reset
