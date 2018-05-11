@@ -24,7 +24,7 @@ var config = {
 			template: 'app/index.html'
 		})
 	],
-	mode: 'production'
+	mode: 'development'
 };
 
 if (process.env.NODE_ENV === 'production') {
